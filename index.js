@@ -24,7 +24,7 @@ function onClac(btn) {
     if(btn=='btn5'){
         junkist = document.getElementById('textInput');
         pointName = junkist.value;
-        sendList(myList);
+        sendList(myList, pointName);
         junkist.value='';
         tracker.removeEventListener("mousemove", updateDisplay, false);
         tracker.removeEventListener("mouseenter", updateDisplay, false);
@@ -72,20 +72,17 @@ function listMake(x,y) {
     myList.push(y);   
 }
    // takes the list and post it in json format to db 
-function sendList(maList) {
-    /*var token = $('input[name="csrfToken"]').attr('value');
-    $.ajaxSetup({
-        beforeSend: function(xhr){
-            xhr.setRequestHeader('Csrf-Token',token);
-        }
-    });*/
+function sendList(maList,name) {
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    console.log('i mean its in here');
 
     $.ajax({
             type: "POST",
             url: 'http://127.0.0.1:8000/newCoords',
-            data: {pointName: pointName,
-            fieldPoints: maList,
-            
-        },
+            headers: {'X-CSRFToken': csrftoken},
+            data: {
+                pointName: name,
+                fieldPoints: maList,
+            },
         });
 }
