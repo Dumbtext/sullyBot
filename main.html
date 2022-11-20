@@ -28,7 +28,7 @@
         <br>
         <p>Click rec to monitor mouse position. </p>
         <p>Click stop to end and send to start the bot!</p>
-        <form > {% csrf_token %}
+        <form action="" method="post">{% csrf_token %}</form>
         <input  type="text" id="textInput" placeholder="Route Name" maxlength="15"  >
         <button type ="button" id="btn3" onmousedown="onClac(this.id)">rec</button>
         <button type ="button" id="btn4" onmousedown="onClac(this.id)">stop rec</button>
