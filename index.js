@@ -20,17 +20,24 @@ function onClac(btn) {
         tracker.addEventListener("mouseleave", updateDisplay, false);
         
     }
-    if(btn=='btn4'){
-        tracker.style.backgroundColor= 'bisque';
-        sendList(myList);
-    }
+    
     if(btn=='btn5'){
-        junkist = document.getElementById('textInput').value;
-        pointName = junkist;
+        junkist = document.getElementById('textInput');
+        pointName = junkist.value;
         sendList(myList);
         junkist.value='';
+        tracker.removeEventListener("mousemove", updateDisplay, false);
+        tracker.removeEventListener("mouseenter", updateDisplay, false);
+        tracker.removeEventListener("mouseleave", updateDisplay, false);
     }
-    
+    if(btn=='btn4'){
+        tracker.style.backgroundColor= 'bisque';
+        junkist = document.getElementById('textInput');
+        junkist.value='';
+        tracker.removeEventListener("mousemove", updateDisplay, false);
+        tracker.removeEventListener("mouseenter", updateDisplay, false);
+        tracker.removeEventListener("mouseleave", updateDisplay, false);
+    }
 
     setTimeout(tOut(),600);
 }
@@ -66,16 +73,19 @@ function listMake(x,y) {
 }
    // takes the list and post it in json format to db 
 function sendList(maList) {
-    var token = $('input[name="csrfToken"]').attr('value');
+    /*var token = $('input[name="csrfToken"]').attr('value');
     $.ajaxSetup({
         beforeSend: function(xhr){
             xhr.setRequestHeader('Csrf-Token',token);
         }
-    });
+    });*/
 
     $.ajax({
             type: "POST",
-            url: 'http://127.0.0.1:8000/newCoords/',
-            data: {pointName:'pointName',fieldPoints: 'maList'},
+            url: 'http://127.0.0.1:8000/newCoords',
+            data: {pointName: pointName,
+            fieldPoints: maList,
+            
+        },
         });
 }
