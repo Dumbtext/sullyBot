@@ -1,0 +1,64 @@
+body {
+    background-color: wheat;
+}
+.mouse{
+    position: relative;
+    margin:auto;
+    text-align: center;
+    font-size: larger;
+    width: 50%;
+    border: 5px solid black;
+    padding: 10px;
+    
+    
+}
+.shake{
+    text-align: center;
+    margin:auto;
+    font-size: larger;
+    width: 50%;
+    border: 5px solid black;
+    padding: 10px;
+    position: relative;
+}
+P{
+    text-align: center;
+}
+button{
+    margin: auto;
+    background-color: gray;
+    color: white;
+    width: 5%;
+    border-radius: 50%;
+  
+}
+button:hover{
+    margin: auto;
+    background-color: wheat;
+    color: black;
+    width: 5%;
+}
+
+#textInput{
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 5px;
+    position: relative;
+    text-align: center;
+    display: block;
+    padding: 5px;
+
+}
+
+.tracker{
+    
+    text-align: center;
+    margin: auto;
+    font-size: larger;
+    width: 30vw;
+    height: 30vw;
+    background-color: bisque;
+    border: 5px solid black;
+    padding: 10px;
+ 
+}    
