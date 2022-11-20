@@ -78,11 +78,11 @@ function sendList(maList,name) {
 
     $.ajax({
             type: "POST",
-            url: 'http://127.0.0.1:8000/newCoords',
-            headers: {'X-CSRFToken': csrftoken},
+            url: 'http://127.0.0.1:8000/newCoords/',
             data: {
                 pointName: name,
                 fieldPoints: maList,
+                csrfmiddlewaretoken:$('[input[name=csrfmiddlewaretoken]').val()
             },
         });
 }
