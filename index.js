@@ -1,6 +1,7 @@
 
 
 
+
 //my globals lol w
 var pageX = document.getElementById("x");
 var pageY = document.getElementById("y");
@@ -73,16 +74,30 @@ function listMake(x,y) {
 }
    // takes the list and post it in json format to db 
 function sendList(maList,name) {
-    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-    console.log('i mean its in here');
-
+    var liste = maList;
+    var namee= name;
+    const csrftoken = $('[input[name=csrfmiddlewaretoken]').val();
+    console.log(csrftoken);
+    console.log(maList);
+    console.log(name)
     $.ajax({
             type: "POST",
             url: 'http://127.0.0.1:8000/newCoords/',
-            data: {
-                pointName: name,
-                fieldPoints: maList,
-                csrfmiddlewaretoken:$('[input[name=csrfmiddlewaretoken]').val()
+            headers: {
+                'X-CSRFToken':csrftoken
             },
+            contentType:"application/json",
+            dataType:'json',
+            data: {
+                pointName: namee,
+                fieldPoints: liste,
+                //csrfmiddlewaretoken: csrftoken
+            },
+            sucess: function(data) {
+                console.log(data);
+            },
+            error: function () {
+                console.log("it's not sending over");
+            }
         });
 }
